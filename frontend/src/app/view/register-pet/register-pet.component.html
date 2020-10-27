@@ -1,0 +1,117 @@
+<app-header></app-header>
+<section class="introducao">
+    <div class="box-introducao">
+        <p class="info-introducao">Está na hora de cadastrar o Pet para a doação</p>
+    </div>
+
+    <div class="box-introducao d-flex justify-content-between">
+        <p class="descricao">Cadastre um perfil para cada Pet, eles merecem.</p>
+        
+        <div class="descricao-img">
+            <img src="../../../assets/IMG/hero-image.png">
+            <p> Vamos encontrar o lar ideal para o seu Pet</p>
+        </div>
+        
+
+    </div>
+</section>
+
+<section class="container">
+    <form action="telaConcluido.html" class="formulario" id="formulario">
+        <div class="subtitulo">
+            <h3>Dados do Doador</h3>
+        </div>
+        
+        <div class="input-block">
+            <label for="name">Nome Completo</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-block">
+                    <label for="local">Link da sua localização <small>(Link Maps)</small></label>
+                    <input type="url" name="local" id="local" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-block">
+                    <label for="whatsapp">Whatsapp <small>(somente números)</small></label>
+                    <input type="text" name="whatsapp" id="whatsapp" placeholder="(    )  _____  ____" required>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="subtitulo">
+            <h3>Sobre o Pet</h3>
+        </div>
+    
+        <div class="input-block">
+            <label for="namePet">Nome do Pet</label>
+            <input type="text" name="namePet" id="namePet" required>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-block">
+                    <label for="especiePet">Espécie</label>
+                    <input type="text" name="especiePet" id="especiePet" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-block">
+                    <label for="raca">Raça</label>
+                    <input type="text" name="raca" id="raca"  required>
+                </div>
+            </div>
+        </div>
+        <div class="input-block">
+            <label for="sexoPet">Sexo</label>
+            <select name="sexoPet" id="sexoPet">
+                <option value="">-- Selecione --</option>
+                <option value="Macho">Macho</option>
+                <option value="Femea">Fêmea</option>
+            </select>
+        </div>
+
+        <div class="input-block">
+            <label for="foto">Link foto do pet <small>(comece com //http)</small></label>
+            <input type="url" name="foto" id="foto" required>
+        </div>
+
+        <label class="colorCinza">Porte Fisico</label>
+        <div class="input-radio-block">
+            
+            <div>
+                <input type="radio" name="radio" id="radio1" value="Pequeno">
+                <label for="radio1">Pequeno</label>
+            </div>
+            <div>
+                <input type="radio" name="radio" id="radio2" value="Médio">
+                <label for="radio2">Médio</label>
+            </div>
+            <div>
+                <input type="radio" name="radio" id="radio2" value="Grande">
+                <label for="radio2">Grande</label>
+            </div>
+            
+        </div>
+
+        <div class="input-block">
+            <label for="biografia">Biografia <small>(Conte mais sobre o seu Pet)</small></label>
+            <textarea name="biografia" id="biografia" cols="30" rows="10"></textarea>
+        </div>
+
+        <div class="input-block center">
+            <label for="accept">Aceita receber informações por Email?</label>
+            <input type="checkbox" name="accept" id="accept">
+        </div>
+
+    </form>
+    <div class="form-footer">
+
+        <div> <img src="../../../assets/IMG/warning.png"><p>Importante!<br>Preencha todos os dados</p></div>
+        <button type="submit" class="btn" form="formulario">Salvar cadastro</button>
+        
+    </div>
+</section>

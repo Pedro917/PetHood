@@ -1,4 +1,4 @@
-**# PetHood**
+# Pethood
 
 
 
@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 
 
-**## Development server**
+## Development server
 
 
 
@@ -14,7 +14,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 
 
-**## Code scaffolding**
+## Code scaffolding
 
 
 
@@ -22,7 +22,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 
 
-**## Build**
+## Build
 
 
 
@@ -30,7 +30,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 
 
-**## Running unit tests**
+## Running unit tests
 
 
 
@@ -38,7 +38,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 
 
-**## Running end-to-end tests**
+## Running end-to-end tests
 
 
 
@@ -46,7 +46,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 
 
-**## Further help**
+## Further help
 
 
 

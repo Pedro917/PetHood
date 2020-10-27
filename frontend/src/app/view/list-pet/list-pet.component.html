@@ -1,0 +1,239 @@
+<app-header></app-header>
+<section class="introducao">
+    <div class="container">
+        <div class="box-introducao">
+            <p class="descricao">Estes são os<br>Pets disponiveis.</p>
+
+            <img src="../../../assets/IMG/hero-image.png">
+        </div>
+    </div>
+</section>
+<section class="container">
+    <div class="filtroBusca">
+        <form action="">
+            <div class="input-block">
+                <label for="filtroEspecie">Espécie</label>
+                <input type="text" name="filtroEspecie" id="filtroEspecie">
+            </div>
+            <div class="input-block">
+                <label for="filtroRaca">Raça</label>
+                <input type="text" name="filtroRaca" id="filtroRaca">
+            </div>
+            <input type="submit">
+        </form>
+    </div>
+</section>
+<section class="container">
+    <div class="boxCard">
+        <div class="cardPet">
+            <div class="cardHeader">
+                <div class="d-flex justify-content-start align-items-center">
+                    <img src="../../../assets/IMG/floquinho.png" alt="Imagem de Perfil do Pet">
+                    <div class="titulo-header">
+                        <p>Floquinho de Neve</p>
+                        <small>Poodle</small>
+                    </div>
+                </div>
+                <button class="btn verde" data-toggle="modal" data-target="#modal1">Abrir Perfil</button>
+            </div>
+            <div class="cardBody">
+                <p>Coisa mais fofa do mundo, mas se chegar perto sem ele te conhecer... Já era uma perna.</p>
+                <p>Cachorro de madame viúva.</p>
+                <p>Adote essa coisa linda e tenha otimas noites perdidas de sono.</p>
+            </div>
+        </div>
+        <div class="cardFooter">
+            <button class="curtida"><img src="../../../assets/IMG/heart (1).svg"> 23 curtidas</button>
+            <a href="https://api.whatsapp.com/send?phone=5588996568427&text=Ol%C3%A1" target="_blank" rel="noopener noreferrer" class="btn vermelho"><img src="../../../assets/IMG/whatsapp.png"> Entrar em contato</a>
+        </div>
+    </div>
+
+    <div class="boxCard">
+        <div class="cardPet">
+            <div class="cardHeader">
+                <div class="d-flex justify-content-start align-items-center">
+                    <img src="../../../assets/IMG/caramelo.png" alt="Imagem de Perfil do Pet">
+                    <div class="titulo-header">
+                        <p>Tony Stark</p>
+                        <small>Vira Lata Caramelo</small>
+                    </div>
+                </div>
+                <button class="btn verde" data-toggle="modal" data-target="#modal2">Abrir Perfil</button>
+            </div>
+            <div class="cardBody">
+                <p>O queridinho das redes sociais, existe desde os primordios mas só foram falar sobre ele agora.</p>
+                <p>Cachorro indestrutivel, come de tudo e zero prejuizo com veterinário.</p>
+                <p>Ele vai te dar todo o amor e carinho, por favor venha amar essa coisinha.</p>
+            </div>
+        </div>
+        <div class="cardFooter">
+            <button class="curtida"><img src="../../../assets/IMG/heart (1).svg"> 150 curtidas</button>
+            <a href="https://api.whatsapp.com/send?phone=5588996568427&text=Ol%C3%A1" target="_blank" rel="noopener noreferrer" class="btn vermelho"><img src="../../../assets/IMG/whatsapp.png"> Entrar em contato</a>
+        </div>
+    </div>
+
+    <div class="boxCard">
+        <div class="cardPet">
+            <div class="cardHeader">
+                <div class="d-flex justify-content-start align-items-center">
+                    <img src="../../../assets/IMG/fofucho.png" alt="Imagem de Perfil do Pet">
+                    <div class="titulo-header">
+                        <p>Fofucho</p>
+                        <small>De Rico</small>
+                    </div>
+                </div>
+                <button class="btn verde" data-toggle="modal" data-target="#modal3">Abrir Perfil</button>
+            </div>
+            <div class="cardBody">
+                <p>É daqueles cachorros que você só ver em foto de gringo, coisa mais linda do mundo, mas cuidado pra não roubarem ele de você, pois quem ver já o quer para sí proprio.</p>
+                <p>Sim, estou doando ele. O intuito é para fazer mais uma familia feliz.</p>
+            </div>
+        </div>
+        <div class="cardFooter">
+            <button class="curtida"><img src="../../../assets/IMG/heart (1).svg"> 56 curtidas</button>
+            <a href="https://api.whatsapp.com/send?phone=5588996568427&text=Ol%C3%A1" target="_blank" rel="noopener noreferrer" class="btn vermelho"><img src="../../../assets/IMG/whatsapp.png"> Entrar em contato</a>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="modal1" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title titulo-modal" id="staticBackdropLabel">Perfil do Floquinho de Neve </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                  <tr>
+                    <th scope="row">Nome</th>
+                    <td>Floquinho de Neve</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Espécie</th>
+                    <td>Cachorro</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Raça</th>
+                    <td>Poodle</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sexo</th>
+                    <td>Macho</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Porte Fisico</th>
+                    <td>Pequeno</td>
+                  </tr>
+            </table>
+              <br>
+              <h5 class="titulo-modal">Informações do Dono</h5>
+              <br>
+              <p>Nome: Pedro Barbosa</p>
+              <p>Fone: (88) 99656-8427</p>
+              <p>Endereço: <a href="http://www.google.com.br/maps/" target="_blank" rel="noopener noreferrer"> Clique Para acessar</a></p>
+                
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn vermelho" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal2" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title titulo-modal" id="staticBackdropLabel">Perfil do Tony Stark</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                  <tr>
+                    <th scope="row">Nome</th>
+                    <td>Tony Stark</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Espécie</th>
+                    <td>Cachorro</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Raça</th>
+                    <td>Vira Lata Caramelo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sexo</th>
+                    <td>Macho</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Porte Fisico</th>
+                    <td>Medio</td>
+                  </tr>
+            </table>
+              <br>
+              <h5 class="titulo-modal">Informações do Dono</h5>
+              <br>
+              <p>Nome: Maria Julia</p>
+              <p>Fone: (88) 99635-8427</p>
+              <p>Endereço: <a href="http://www.google.com.br/maps/" target="_blank" rel="noopener noreferrer"> Clique Para acessar</a></p>
+                
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn vermelho" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal3" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title titulo-modal" id="staticBackdropLabel">Perfil do Fofucho</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                  <tr>
+                    <th scope="row">Nome</th>
+                    <td>Fofucho</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Espécie</th>
+                    <td>Cachorro</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Raça</th>
+                    <td>De Rico</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sexo</th>
+                    <td>Macho</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Porte Fisico</th>
+                    <td>Medio</td>
+                  </tr>
+            </table>
+              <br>
+              <h5 class="titulo-modal">Informações do Dono</h5>
+              <br>
+              <p>Nome: Ramon Ferreira</p>
+              <p>Fone: (88) 99656-0000</p>
+              <p>Endereço: <a href="http://www.google.com.br/maps/" target="_blank" rel="noopener noreferrer"> Clique Para acessar</a></p>
+                
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn vermelho" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
