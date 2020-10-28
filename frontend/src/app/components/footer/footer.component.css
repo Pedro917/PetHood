@@ -17,11 +17,11 @@
     margin-top: 30px;
 }
 
-.footerContainer img{
+.footerContainer a img{
     height: 50px;
     width: 50px;
 }
 
-.footerContainer img:nth-child(2){
+.footerContainer a:nth-child(2){
     margin: 0 38px;
 }
