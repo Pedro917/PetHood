@@ -10,10 +10,10 @@
 </section>
 <section class="container">
     <div class="filtroBusca">
-        <form action="">
+        <form>
             <div class="input-block">
                 <label for="filtroEspecie">Espécie</label>
-                <input type="text" name="filtroEspecie" id="filtroEspecie">
+                <input type="text" name="filtroEspecie" id="filtroEspecie" [(ngModel)]="filtroLista">
             </div>
             <div class="input-block">
                 <label for="filtroRaca">Raça</label>
@@ -23,77 +23,31 @@
         </form>
     </div>
 </section>
-<section class="container">
-    <div class="boxCard">
+<section *ngFor="let pet of petsFiltrados" class="container">
+    <div *ngIf="pets.length != 0" class="boxCard">
         <div class="cardPet">
             <div class="cardHeader">
                 <div class="d-flex justify-content-start align-items-center">
-                    <img src="../../../assets/IMG/floquinho.png" alt="Imagem de Perfil do Pet">
+                    <img src="https://localhost:44362/Img/{{pet.foto}}" alt="Imagem de Perfil do Pet" width="80px" height="76px">
                     <div class="titulo-header">
-                        <p>Floquinho de Neve</p>
-                        <small>Poodle</small>
+                        <p>{{pet.nomePet}}</p>
+                        <small>{{pet.raca}}</small>
                     </div>
                 </div>
                 <button class="btn verde" data-toggle="modal" data-target="#modal1">Abrir Perfil</button>
             </div>
             <div class="cardBody">
-                <p>Coisa mais fofa do mundo, mas se chegar perto sem ele te conhecer... Já era uma perna.</p>
-                <p>Cachorro de madame viúva.</p>
-                <p>Adote essa coisa linda e tenha otimas noites perdidas de sono.</p>
+                <p>{{pet.biografia}}</p>
             </div>
         </div>
         <div class="cardFooter">
             <button class="curtida " (click)="curtida()" (click)="curtir()" [class.active]="btnCurtidaStatus" ><img src="{{btnCurtidaStatus == false ? '../../../assets/IMG/heart.svg' : '../../../assets/IMG/heartActive.png'}}" alt=""> {{contCurtidas}} curtidas</button>
-            <a href="https://api.whatsapp.com/send?phone=5588996568427&text=Ol%C3%A1" target="_blank" rel="noopener noreferrer" class="btn vermelho"><img src="../../../assets/IMG/whatsapp.png" alt=""> Entrar em contato</a>
+            <a href="https://api.whatsapp.com/send?phone=55{{pet.whatsapp}}&text=Ol%C3%A1" target="_blank" rel="noopener noreferrer" class="btn vermelho"><img src="../../../assets/IMG/whatsapp.png" alt=""> Entrar em contato</a>
         </div>
     </div>
 </section>
-
-<div class="modal fade" id="modal1" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title titulo-modal" id="staticBackdropLabel">Perfil do Floquinho de Neve </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <table class="table">
-                  <tr>
-                    <th scope="row">Nome</th>
-                    <td>Floquinho de Neve</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Espécie</th>
-                    <td>Cachorro</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Raça</th>
-                    <td>Poodle</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Sexo</th>
-                    <td>Macho</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Porte Fisico</th>
-                    <td>Pequeno</td>
-                  </tr>
-            </table>
-              <br>
-              <h5 class="titulo-modal">Informações do Dono</h5>
-              <br>
-              <p>Nome: Pedro Barbosa</p>
-              <p>Fone: (88) 99656-8427</p>
-              <p>Endereço: <a href="http://www.google.com.br/maps/" target="_blank" rel="noopener noreferrer"> Clique Para acessar</a></p>
-                
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn vermelho" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<div *ngIf="pets.length == 0">
+    <h3>Nenhum Resultado Encontrado</h3>
+</div>
 
 

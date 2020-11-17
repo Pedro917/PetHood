@@ -1,0 +1,227 @@
+
+
+.btn{
+    color: #ffffff;
+    padding: 10px 40px;
+    border-radius: 6px;
+    text-align: center;
+    transition: 1s;
+    font-family: 'Chewy', cursive;
+}
+
+.btn:hover{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.vermelho{
+    background-color: #D93126;
+}
+
+.verde{
+    background-color: #558B2F;
+}
+
+.introducao{
+    width: 100%;
+    height: 250px;
+    background-color: #689F38;
+    font-family: 'Chewy', cursive;
+
+}
+
+.box-introducao{
+    max-width: 740px;
+    margin: 0 auto;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-introducao .descricao{
+    color: #ffffff;
+    max-width: 300px;
+    font-size: 40px;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.box-introducao img{
+    height: 112px;
+    width: 100px;
+}
+
+
+/*----------------------*/
+
+.input-block{
+    display: inline;
+}
+
+.input-block label{
+    color: #ffffff;
+}
+
+.input-block input{
+    display: block;
+    width: 235px;
+    border-radius: 8px;
+    padding: 14px;
+    border: 1px solid #cfc9dd;
+    background-color: #FAFAFC;
+}
+
+.input-block input:focus{
+    border: 2px solid #689F38;
+    outline: 0;
+}
+
+.filtroBusca{
+    max-width: 737px;
+    margin: 0 auto;
+}
+
+.filtroBusca form{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: -60px;
+}
+
+.filtroBusca form input[type=submit]{
+    display: none;
+}
+
+
+/*----------------------*/
+
+.boxCard{
+    max-width: 737px;
+    margin: 0 auto;
+}
+
+.cardPet{
+    margin: 50px 0 auto;
+    width: 100%;
+    border: 0;
+    border-radius: 8px 8px 0px 0px;
+    background-color: #ffffff;
+    padding: 34px;
+}
+
+.cardHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardHeader img{
+    height: 76px;
+    width: 80px;
+    margin-right: 20px;
+}
+
+.titulo-header p{
+    font-weight: bold;
+    color: #354D26;
+    font-size: 24px;
+    margin: 0;
+}
+
+.titulo-header small{
+    font-size: 16px;
+    color: #486C28;
+}
+
+.cardHeader button img{
+    height: 32px ;
+    width: 32px;
+}
+
+.cardBody{
+    margin: 25px auto;
+    width: 100%;
+}
+
+.cardBody p{
+    color: #486C28;
+    margin-bottom: 1.5rem;
+}
+
+.cardFooter{
+    background-color: #FAFAFC;
+    border: 1px solid #cfc9dd;
+    height: 120px;
+    width: 100%;
+    border-radius: 0px 0px 8px 8px;
+    margin-bottom: 50px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.cardFooter a img{
+    height: 35px;
+    width: 35px;
+    margin-right: 10px;
+}
+
+.cardFooter button img{
+    height: 35px;
+    width: 35px;
+    margin-right: 10px;
+}
+
+.curtida{
+    padding: 10px;
+    color: #D93126;
+    font-weight: bold;
+    border: 0;
+    background-color: #FAFAFC;
+}
+
+.curtida:focus{
+    outline: 0;
+}
+
+.active{
+    color: #354D26;
+ }
+ 
+/*----------------------*/
+
+.titulo-modal{
+    font-family: 'Chewy', cursive;
+    text-align: center;
+}
+
+.table th{
+    color: #558B2F;
+}
+
+
+/*----------------------*/
+
+
+
+
+@media(max-width: 700px){
+
+    .introducao{
+        height: 420px;
+    }
+
+    .filtroBusca form{
+        margin-top: -220px;
+    }
+    .input-block input{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .filtroBusca form{
+        display: block;
+    }
+
+}
