@@ -13,6 +13,10 @@ import { ListPetComponent } from './view/list-pet/list-pet.component';
 import { fromEventPattern } from 'rxjs';
 import { ModalListaComponent } from './components/modal-lista/modal-lista.component';
 
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +32,8 @@ import { ModalListaComponent } from './components/modal-lista/modal-lista.compon
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ModalModule.forRoot(),
+    TooltipModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,8 @@
+import { PetService } from './../../Services/Pet.service';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Pet } from 'src/app/Models/Pet';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-list-pet',
@@ -10,6 +13,18 @@ import { Component, OnInit } from '@angular/core';
 export class ListPetComponent implements OnInit {
 
   _filtroListaEspecie: string;
+  modalRef: BsModalRef;
+  pets: Pet[];
+  petsFiltrados: Pet[];
+
+  constructor(
+    private petService: PetService,
+    private modalService: BsModalService
+    ) { }
+
+  ngOnInit(): void {
+    this.getPets();
+  }
 
   get filtroLista():string{
     return this._filtroListaEspecie;
@@ -19,47 +34,34 @@ export class ListPetComponent implements OnInit {
     this.petsFiltrados = this.filtroLista ? this.filtrarPets(this.filtroLista) : this.pets;
   }
 
-  pets: any = [];
-  petsFiltrados: any = [];
-
-
-  constructor(private http: HttpClient) { }
-
-  ngOnInit(): void {
-    this.getPets();
-  }
-
-  filtrarPets(filtrarPor: string): any{
+  filtrarPets(filtrarPor: string): Pet[]{
     filtrarPor = filtrarPor.toLocaleLowerCase();
     return this.pets.filter(
       pet => pet.especie.toLocaleLowerCase().indexOf(filtrarPor) !== -1
     );
   }
 
-  contCurtidas: number = 1000;
-  btnCurtidaStatus: boolean = false;
-
-  curtir(){
-    this.btnCurtidaStatus = !this.btnCurtidaStatus;
-  }
-
-  curtida(){
-    if(!this.btnCurtidaStatus){
-      this.contCurtidas++
-    }else{
-      this.contCurtidas--
-    }
-    
-  }
-
   getPets(){
-    this.http.get("https://localhost:44362/v1/Pets").subscribe(response => {
-      this.pets = response;
+    this.petService.getPet().subscribe((_evento : Pet[]) => {
+      this.pets = _evento;
+      this.petsFiltrados = this.pets;
       console.log(this.pets);
     }, error =>{
       console.log(error);
     });
   }
+
+  openModal(template: TemplateRef<any>){
+    this.modalRef = this.modalService.show(template);
+  }
+
+
+  
+
+
+
+
+  
 
 }
 
