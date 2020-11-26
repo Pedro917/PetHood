@@ -142,11 +142,13 @@
 .cardBody{
     margin: 25px auto;
     width: 100%;
+    position: relative;
 }
 
 .cardBody p{
     color: #486C28;
     margin-bottom: 1.5rem;
+    width: 90%;
 }
 
 .cardFooter{

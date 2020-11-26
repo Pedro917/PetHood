@@ -17,27 +17,36 @@
 </section>
 
 <section class="container">
-    <form action="telaConcluido.html" class="formulario" id="formulario">
+    <form [formGroup]="registerForm" class="formulario" id="formulario">
         <div class="subtitulo">
             <h3>Dados do Doador</h3>
         </div>
         
         <div class="input-block">
-            <label for="name">Nome Completo</label>
-            <input type="text" name="name" id="name" required>
+            <label for="nomeUsuario">Nome Completo</label>
+            <input type="text" class="form-control" [ngClass]="{'is-invalid': registerForm.get('nomeUsuario').errors && registerForm.get('nomeUsuario').touched}" name="nomeUsuario" id="nomeUsuario" formControlName="nomeUsuario">
+            <div class="invalid-feedback">
+                Campo Obrigatório
+            </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
                 <div class="input-block">
-                    <label for="local">Link da sua localização <small>(Link Maps)</small></label>
-                    <input type="url" name="local" id="local" required>
+                    <label for="localizacao">Link da sua localização <small>(Link Maps)</small></label>
+                    <input type="url" class="form-control" [ngClass]="{'is-invalid': registerForm.get('localizacao').errors && registerForm.get('localizacao').touched}" name="localizacao" id="localizacao" formControlName="localizacao">
+                    <div class="invalid-feedback">
+                        Campo Obrigatório
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-block">
                     <label for="whatsapp">Whatsapp <small>(somente números)</small></label>
-                    <input type="text" name="whatsapp" id="whatsapp" placeholder="(    )  _____  ____" required>
+                    <input type="text" class="form-control" [ngClass]="{'is-invalid': registerForm.get('whatsapp').errors && registerForm.get('whatsapp').touched}" name="whatsapp" id="whatsapp" placeholder="(    )  _____  ____" formControlName="whatsapp">
+                    <div class="invalid-feedback">
+                        Campo Obrigatório
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,51 +56,66 @@
         </div>
     
         <div class="input-block">
-            <label for="namePet">Nome do Pet</label>
-            <input type="text" name="namePet" id="namePet" required>
+            <label for="nomePet">Nome do Pet</label>
+            <input type="text" class="form-control" [ngClass]="{'is-invalid': registerForm.get('nomePet').errors && registerForm.get('nomePet').touched}" name="nomePet" id="nomePet" formControlName="nomePet">
+            <div class="invalid-feedback">
+                Campo Obrigatório
+            </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
                 <div class="input-block">
-                    <label for="especiePet">Espécie</label>
-                    <input type="text" name="especiePet" id="especiePet" required>
+                    <label for="especie">Espécie</label>
+                    <input type="text" class="form-control" [ngClass]="{'is-invalid': registerForm.get('especie').errors && registerForm.get('especie').touched}" name="especie" id="especie" formControlName="especie">
+                    <div class="invalid-feedback">
+                        Campo Obrigatório
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-block">
                     <label for="raca">Raça</label>
-                    <input type="text" name="raca" id="raca"  required>
+                    <input type="text" class="form-control" disabled name="raca" id="raca" placeholder="Campo Desabilitado">
+                    <div class="invalid-feedback">
+                        Campo Obrigatório
+                    </div>
                 </div>
             </div>
         </div>
         <div class="input-block">
-            <label for="sexoPet">Sexo</label>
-            <select name="sexoPet" id="sexoPet">
+            <label for="sexo">Sexo</label>
+            <select class="form-control" [ngClass]="{'is-invalid': registerForm.get('sexo').errors && registerForm.get('sexo').touched}" name="sexo" id="sexo" formControlName="sexo">
                 <option value="">-- Selecione --</option>
                 <option value="Macho">Macho</option>
                 <option value="Femea">Fêmea</option>
             </select>
+            <div class="invalid-feedback">
+                Campo Obrigatório
+            </div>
         </div>
 
         <div class="input-block">
             <label for="foto">Link foto do pet <small>(comece com //http)</small></label>
-            <input type="url" name="foto" id="foto" required>
+            <input type="url" class="form-control" [ngClass]="{'is-invalid': registerForm.get('foto').errors && registerForm.get('foto').touched}" name="foto" id="foto" formControlName="foto">
+            <div class="invalid-feedback">
+                Campo Obrigatório
+            </div>
         </div>
 
         <label class="colorCinza">Porte Fisico</label>
         <div class="input-radio-block">
             
             <div>
-                <input type="radio" name="radio" id="radio1" value="Pequeno">
+                <input type="radio" name="porteFisico" id="radio1" value="Pequeno" formControlName="porteFisico">
                 <label for="radio1">Pequeno</label>
             </div>
             <div>
-                <input type="radio" name="radio" id="radio2" value="Médio">
+                <input type="radio" name="porteFisico" id="radio2" value="Medio" formControlName="porteFisico">
                 <label for="radio2">Médio</label>
             </div>
             <div>
-                <input type="radio" name="radio" id="radio2" value="Grande">
+                <input type="radio" name="porteFisico" id="radio2" value="Grande" formControlName="porteFisico">
                 <label for="radio2">Grande</label>
             </div>
             
@@ -99,19 +123,22 @@
 
         <div class="input-block">
             <label for="biografia">Biografia <small>(Conte mais sobre o seu Pet)</small></label>
-            <textarea name="biografia" id="biografia" cols="30" rows="10"></textarea>
+            <textarea class="form-control" [ngClass]="{'is-invalid': registerForm.get('biografia').errors && registerForm.get('biografia').touched}" name="biografia" id="biografia" cols="30" rows="10" formControlName="biografia"></textarea>
+            <div class="invalid-feedback">
+                Campo Obrigatório
+            </div>
         </div>
 
         <div class="input-block center">
             <label for="accept">Aceita receber informações por Email?</label>
-            <input type="checkbox" name="accept" id="accept">
+            <input type="checkbox" name="accept" id="accept" formControlName="infoEmail">
         </div>
 
     </form>
     <div class="form-footer">
 
         <div> <img src="../../../assets/IMG/warning.png" alt=""><p>Importante!<br>Preencha todos os dados</p></div>
-        <button type="submit" class="btn" form="formulario">Salvar cadastro</button>
+        <button type="submit" class="btn" form="formulario" [disabled]="!registerForm.valid" (click)="salvarAlteracao()">Salvar cadastro</button>
         
     </div>
 </section>

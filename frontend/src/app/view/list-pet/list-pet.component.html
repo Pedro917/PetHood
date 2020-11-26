@@ -31,30 +31,161 @@
                     <img src="https://localhost:44362/Img/{{pet.foto}}" alt="Imagem de Perfil do Pet" width="80px" height="76px">
                     <div class="titulo-header">
                         <p>{{pet.nomePet}}</p>
-                        <small>{{pet.raca}}</small>
+                        <small></small>
                     </div>
                 </div>
-                <button class="btn verde" (click)="openModal(template)" >Abrir Perfil</button>
+                <button class="btn verde" (click)="openPerfilPet(pet, template)" >Abrir Perfil</button>
             </div>
             <div class="cardBody">
                 <p>{{pet.biografia}}</p>
             </div>
         </div>
         <div class="cardFooter">
+            <div class="btn-group">
+              <button class="btn vermelho" (click)="openEditPet(pet, template2)">Editar</button>
+              <button class="btn verde">Deletar</button>
+            </div>
             <a href="https://api.whatsapp.com/send?phone=55{{pet.whatsapp}}&text=Ol%C3%A1" target="_blank" rel="noopener noreferrer" class="btn vermelho"><img src="../../../assets/IMG/whatsapp.png" alt=""> Entrar em contato</a>
         </div>
     </div>
 </section>
 
-<ng-template #template>
-    <div class="modal-header">
-      <h4 class="modal-title pull-left">Modal</h4>
-      <button type="button" class="close pull-right" 
-      aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
+
+<div bsModal #template="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialog-sizes-name1" >
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Perfil do {{petModal?.nomePet}}</h4>
+        <button type="button" class="close pull-right" (click)="template.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+              <tr>
+                <th scope="row">Nome</th>
+                <td>{{petModal?.nomePet}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Espécie</th>
+                <td>{{petModal?.especie}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Raça</th>
+                <td>{{petModal?.raca}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Sexo</th>
+                <td>{{petModal?.sexo}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Porte Fisico</th>
+                <td>{{petModal?.porteFisico}}</td>
+              </tr>
+        </table>
+          <br>
+          <h5 class="titulo-modal">Informações do Dono</h5>
+          <br>
+          <p>Nome: {{petModal?.nomeUsuario}}</p>
+          <p>Fone: {{petModal?.whatsapp}}</p>
+          <p>Endereço: {{petModal?.localizacao}}</p>
+            
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn vermelho" (click)="template.hide()">Close</button>
+    </div>
+    </div>
   </div>
-  <div class="modal-body">
-    This is a modal.
+</div>
+
+<div bsModal #template2="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialog-sizes-name1" >
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Perfil do {{petModal?.nomePet}}</h4>
+        <button type="button" class="close pull-right" (click)="template2.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formulario" id="formulario" name="formulario" (ngSubmit)="editar(template2)">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>Nome do Usuário</label>
+              <input type="text" class="form-control" name="nomeUsuario" id="nomeUsuario" formControlName="nomeUsuario">
+            </div>
+          </div>  
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <label>Endereço</label>
+              <input type="text" class="form-control" name="localizacao" id="localizacao" formControlName="localizacao">
+            </div>
+            <div class="form-group col-md-4">
+              <label>Whatsapp</label>
+              <input type="text" class="form-control" name="whatsapp" id="whatsapp" formControlName="whatsapp">
+            </div>
+          </div> 
+          <h4>Dados do Pet</h4><br> 
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>Nome do Pet</label>
+              <input type="text" class="form-control" name="nomePet" id="nomePet" formControlName="nomePet">
+            </div>
+          </div>  
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>Espécie</label>
+              <input type="text" class="form-control" name="especie" id="especie" formControlName="especie">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Foto do Pet</label>
+              <input type="text" class="form-control" name="foto" id="foto" formControlName="foto">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Sexo do Pet</label>
+              <select class="form-control" name="sexo" id="sexo" formControlName="sexo">
+                <option value="Macho">Macho</option>
+                <option value="Femea">Fêmea</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>Porte Fisico</label>
+              <select class="form-control" name="porteFisico" id="porteFisico" formControlName="porteFisico">
+                <option value="Pequeno">Pequeno</option>
+                <option value="Medio">Medio</option>
+                <option value="Grande">Grande</option>
+              </select>
+            </div>
+          </div> 
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>Biografia</label>
+              <textarea class="form-control"  name="biografia" id="biografia" cols="30" rows="10" formControlName="biografia"></textarea>
+            </div>
+          </div> 
+        </form>
+            
+    </div>
+    <div class="modal-footer">
+      <br>
+        <button class="btn vermelho" (click)="template2.hide()">
+          Cancelar
+        </button>
+        <button type="submit" form="formulario" class="btn verde" [disabled]="formulario.invalid">
+          Salvar Alterações
+        </button>
+        <br>
+        <p>{{formulario.value | json}}</p>
+        <br>
+    </div>
+    </div>
   </div>
-</ng-template>
+</div>
+
+

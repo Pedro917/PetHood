@@ -3,6 +3,10 @@
     scroll-behavior: smooth;
 }
 
+.user-selectTrue{
+    user-select: text;
+}
+
 body{
     background-color: #FFF59D;
 }

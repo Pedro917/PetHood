@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Pet } from 'src/app/Models/Pet';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { templateJitUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-list-pet',
@@ -13,17 +15,21 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 export class ListPetComponent implements OnInit {
 
   _filtroListaEspecie: string;
-  modalRef: BsModalRef;
   pets: Pet[];
+  petModal: Pet;
   petsFiltrados: Pet[];
+  formulario: FormGroup;
+  pet: Pet;
 
   constructor(
     private petService: PetService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private fb: FormBuilder,
     ) { }
 
   ngOnInit(): void {
     this.getPets();
+    this.configurarForm();
   }
 
   get filtroLista():string{
@@ -42,8 +48,8 @@ export class ListPetComponent implements OnInit {
   }
 
   getPets(){
-    this.petService.getPet().subscribe((_evento : Pet[]) => {
-      this.pets = _evento;
+    this.petService.getPet().subscribe((_pet : Pet[]) => {
+      this.pets = _pet;
       this.petsFiltrados = this.pets;
       console.log(this.pets);
     }, error =>{
@@ -51,17 +57,41 @@ export class ListPetComponent implements OnInit {
     });
   }
 
-  openModal(template: TemplateRef<any>){
-    this.modalRef = this.modalService.show(template);
+  openModal(template: any){
+    template.show();
   }
 
+  openPerfilPet(pet: Pet, template: any){
+    this.openModal(template);
+    this.petModal = pet;
+  }
 
-  
+  openEditPet(pet: Pet, template: any){
+    this.formulario.reset();
+    this.openModal(template);
+    this.petModal = pet;
+    this.formulario.patchValue(pet);
+  }
 
+  configurarForm(){
+    this.formulario = this.fb.group({
+      nomeUsuario: ['',Validators.required],
+      whatsapp: ['',Validators.required],
+      localizacao: ['',Validators.required],
+      nomePet: ['',Validators.required],
+      especie: ['',Validators.required],
+      sexo: ['',Validators.required],
+      foto: ['',Validators.required],
+      porteFisico: ['',Validators.required],
+      biografia: ['',Validators.required],
+    });
+  }
 
-
-
-  
+  editar(template:any){
+    console.log(this.petModal.id);
+    template.hide();
+    
+  }
 
 }
 
