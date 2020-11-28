@@ -7,7 +7,7 @@ export interface Pet {
     localizacao: string;
     nomePet: string;
     especie: string;
-    raca: Breed;
+    raca: string;
     breedId: number;
     sexo: string;
     foto: string;

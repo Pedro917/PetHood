@@ -24,7 +24,7 @@
         
         <div class="input-block">
             <label for="nomeUsuario">Nome Completo</label>
-            <input type="text" class="form-control" [ngClass]="{'is-invalid': registerForm.get('nomeUsuario').errors && registerForm.get('nomeUsuario').touched}" name="nomeUsuario" id="nomeUsuario" formControlName="nomeUsuario">
+            <input type="text" class="form-control " [ngClass]="{'is-invalid': registerForm.get('nomeUsuario').errors && registerForm.get('nomeUsuario').touched}" name="nomeUsuario" id="nomeUsuario" formControlName="nomeUsuario">
             <div class="invalid-feedback">
                 Campo Obrigatório
             </div>
@@ -64,8 +64,8 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
-                <div class="input-block">
+            <div class="col-md-12">
+                <div class="input-block ">
                     <label for="especie">Espécie</label>
                     <input type="text" class="form-control" [ngClass]="{'is-invalid': registerForm.get('especie').errors && registerForm.get('especie').touched}" name="especie" id="especie" formControlName="especie">
                     <div class="invalid-feedback">
@@ -73,14 +73,23 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-6">
                 <div class="input-block">
-                    <label for="raca">Raça</label>
-                    <input type="text" class="form-control" disabled name="raca" id="raca" placeholder="Campo Desabilitado">
-                    <div class="invalid-feedback">
-                        Campo Obrigatório
-                    </div>
+                    <label for="raca">Raça <strong style="color: red;">*</strong></label>
+                    <select class="form-control" name="raca" id="raca" formControlName="raca">
+                        <option *ngFor="let breed of breeds" [value]="breed.descricao">{{breed.descricao}}</option>
+                      </select>
                 </div>
+            </div>
+            <div class="col-md-6  d-flex justify-content-center align-self-center btn-group">
+                <button class="btn2 btn verde" (click)="openModal(template3)">
+                    Adicionar Raça
+                </button>
+                <button class="btn2 btn vermelho" (click)="openModal(template4)">
+                    Raças
+                </button>
             </div>
         </div>
         <div class="input-block">
@@ -96,7 +105,7 @@
         </div>
 
         <div class="input-block">
-            <label for="foto">Link foto do pet <small>(comece com //http)</small></label>
+            <label for="foto">Url foto do pet <small>(Ainda em desenvolvimento)</small></label>
             <input type="url" class="form-control" [ngClass]="{'is-invalid': registerForm.get('foto').errors && registerForm.get('foto').touched}" name="foto" id="foto" formControlName="foto">
             <div class="invalid-feedback">
                 Campo Obrigatório
@@ -138,7 +147,121 @@
     <div class="form-footer">
 
         <div> <img src="../../../assets/IMG/warning.png" alt=""><p>Importante!<br>Preencha todos os dados</p></div>
-        <button type="submit" class="btn" form="formulario" [disabled]="!registerForm.valid" (click)="salvarAlteracao()">Salvar cadastro</button>
+        <button type="submit" class="btn2 btn vermelho" form="formulario" [disabled]="!registerForm.valid" (click)="salvarAlteracao()">Salvar cadastro</button>
         
     </div>
 </section>
+
+<div bsModal #template3="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+	<div class="modal-dialog">
+  		<div class="modal-content">
+    		<div class="modal-header">
+      			<h4 class="modal-title pull-left">
+        			Adicionar Raça 
+      			</h4>
+      			<button type="button" class="close pull-right" (click)="template3.hide()" aria-label="Close">
+        			<span aria-hidden="true">&times;</span>
+      			</button>
+    		</div>
+    		<div class="modal-body">
+                <form [formGroup]="register" id="register" name="register" (ngSubmit)="cadastrar(template3)">
+                    <div class="form-row">
+                        <div class="form-group input-block col-md-12">
+                          <label>Descrição da Raça</label>
+                          <input type="text" class="form-control" [ngClass]="{'is-invalid': register.get('descricao').errors && register.get('descricao').touched}" name="descricao"  id="descricao" formControlName="descricao">
+                          <div class="invalid-feedback">
+                            Campo Obrigatório
+                          </div>
+                        </div>
+                      </div> 
+                </form>
+    		</div>    
+    		<div class="modal-footer">      
+      			<button type="button" class="btn2 btn verde" (click)="template3.hide()">
+        			Cancelar
+      			</button>
+      			<button type="submit" form="register" [disabled]="!register.valid" class="btn2 btn vermelho">
+          			Salvar
+        		</button>
+    		</div>
+  		</div>
+	</div>
+</div>
+
+<div bsModal #template4="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+	<div class="modal-dialog">
+  		<div class="modal-content">
+    		<div class="modal-header">
+      			<h4 class="modal-title pull-left">
+        			Listagem das Raças 
+      			</h4>
+      			<button type="button" class="close pull-right" (click)="template4.hide()" aria-label="Close">
+        			<span aria-hidden="true">&times;</span>
+      			</button>
+    		</div>
+    		<div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" colspan="2">Descrição</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let breed of breeds">
+                        <th scope="row">{{breed?.id}}</th>
+                        <td>{{breed?.descricao}}</td>
+                        <td>
+                            <div class="d-flex justify-content-center align-self-center btn-group btn-group-sm">
+                                <button class="btn bntPequeno btn-warning" (click)="editModal(breed,childModal,template4)">Editar</button>
+                                <button class="btn bntPequeno btn-danger" (click)="deleteBreed(breed)">Deletar</button>
+                            </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+    		</div>    
+    		<div class="modal-footer">      
+      			
+    		</div>
+  		</div>
+	</div>
+</div>
+
+
+<!---->
+ 
+<div class="modal fade" bsModal #childModal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="dialog-nested-name2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 id="dialog-nested-name2" class="modal-title pull-left">Editando a Raça {{breed?.descricao}}</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="childModal.hide()">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="editBreed" name="editBreed" id="editBreed" (ngSubmit)="editarBreed(childModal)">
+                <div class="form-row">
+                    <div class="form-group input-block col-md-12">
+                      <label>Descrição da Raça</label>
+                      <input type="text" class="form-control" name="descricao"  id="descricao" formControlName="descricao">
+                      <div class="invalid-feedback">
+                        Campo Obrigatório
+                      </div>
+                    </div>
+                  </div>
+            </form>
+        </div>    
+        <div class="modal-footer">      
+            <button type="button" class="btn2 btn verde" (click)="childModal.hide()">
+                Cancelar
+            </button>
+            <button type="submit" form="editBreed" [disabled]="!editBreed?.valid" class="btn2 btn vermelho">
+                Editar
+            </button>
+        </div>
+        
+    </div>
+    </div>
+  </div>

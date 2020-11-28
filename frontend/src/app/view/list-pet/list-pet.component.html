@@ -17,7 +17,7 @@
             </div>
             <div class="input-block">
                 <label for="filtroRaca">Raça</label>
-                <input type="text" name="filtroRaca" id="filtroRaca">
+                <input type="text" name="filtroRaca" id="filtroRaca" [(ngModel)]="filtroListaRaca">
             </div>
             <input type="submit">
         </form>
@@ -31,7 +31,7 @@
                     <img src="https://localhost:44362/Img/{{pet.foto}}" alt="Imagem de Perfil do Pet" width="80px" height="76px">
                     <div class="titulo-header">
                         <p>{{pet.nomePet}}</p>
-                        <small></small>
+                        <small>{{pet.raca}}</small>
                     </div>
                 </div>
                 <button class="btn verde" (click)="openPerfilPet(pet, template)" >Abrir Perfil</button>
@@ -43,7 +43,7 @@
         <div class="cardFooter">
             <div class="btn-group">
               <button class="btn vermelho" (click)="openEditPet(pet, template2)">Editar</button>
-              <button class="btn verde">Deletar</button>
+              <button class="btn verde" (click)="excluirPet(pet, confirm)">Deletar</button>
             </div>
             <a href="https://api.whatsapp.com/send?phone=55{{pet.whatsapp}}&text=Ol%C3%A1" target="_blank" rel="noopener noreferrer" class="btn vermelho"><img src="../../../assets/IMG/whatsapp.png" alt=""> Entrar em contato</a>
         </div>
@@ -135,9 +135,15 @@
             </div>
           </div>  
           <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
               <label>Espécie</label>
               <input type="text" class="form-control" name="especie" id="especie" formControlName="especie">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Raça</label>
+              <select class="form-control" name="raca" id="raca" formControlName="raca">
+                <option *ngFor="let breed of breeds" [value]="breed.descricao">{{breed.descricao}}</option>
+              </select>
             </div>
           </div>
           <div class="form-row">
@@ -181,11 +187,35 @@
           Salvar Alterações
         </button>
         <br>
-        <p>{{formulario.value | json}}</p>
         <br>
     </div>
     </div>
   </div>
 </div>
 
+<div bsModal #confirm="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+	<div class="modal-dialog modal-sm">
+  		<div class="modal-content">
+    		<div class="modal-header">
+      			<h4 class="modal-title pull-left">
+        			Deletando Pet 
+      			</h4>
+      			<button type="button" class="close pull-right" (click)="confirm.hide()" aria-label="Close">
+        			<span aria-hidden="true">&times;</span>
+      			</button>
+    		</div>
+    		<div class="modal-body">
+      			<p>{{bodyDeletarPet}}</p>
+    		</div>    
+    		<div class="modal-footer btn-group d-flex">      
+      			<button type="button" class="btn verde" (click)="confirm.hide()">
+        			Cancelar
+      			</button>
+      			<button type="button" class="btn vermelho" (click)="confirmeDelete(confirm)">
+          			Deletar
+        		</button>
+    		</div>
+  		</div>
+	</div>
+</div>
 
