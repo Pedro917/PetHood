@@ -14,3 +14,8 @@ body{
 .center{
     text-align: center;
 }
+
+#toast-container > div{
+
+    opacity: 1;
+}

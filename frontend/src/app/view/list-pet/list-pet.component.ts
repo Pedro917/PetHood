@@ -1,11 +1,10 @@
 import { Breed } from './../../Models/Breed';
 import { PetService } from './../../Services/Pet.service';
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pet } from 'src/app/Models/Pet';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { templateJitUrl } from '@angular/compiler';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-pet',
@@ -30,6 +29,7 @@ export class ListPetComponent implements OnInit {
     private petService: PetService,
     private modalService: BsModalService,
     private fb: FormBuilder,
+    private toastr: ToastrService
     ) { }
 
   ngOnInit(): void {
@@ -72,7 +72,6 @@ export class ListPetComponent implements OnInit {
     this.petService.getPet().subscribe((_pet : Pet[]) => {
       this.pets = _pet;
       this.petsFiltrados = this.pets;
-      console.log(this.pets);
     }, error =>{
       console.log(error);
     });
@@ -81,7 +80,6 @@ export class ListPetComponent implements OnInit {
   getBreeds(){
     this.petService.getBreed().subscribe((_breed : Breed[]) => {
       this.breeds = _breed;
-      console.log(this.breeds);
     }, error =>{
       console.log(error);
     });
@@ -130,8 +128,8 @@ export class ListPetComponent implements OnInit {
       this.petService.putPet(this.petTo).subscribe(
         () => {
         }, error => {
-          console.log(error);
           this.getPets();
+          this.toastr.success('Pet Editado com Sucesso');
         }
       );
     }
@@ -143,9 +141,12 @@ export class ListPetComponent implements OnInit {
     this.petService.deletePet(this.petModal.id).subscribe(
       () => {
           template.hide();
+          this.toastr.success('Pet Deletado com Sucesso');
           this.getPets();
+          
         }, error => {
           console.log(error);
+          this.getPets();
         }
     );
   }

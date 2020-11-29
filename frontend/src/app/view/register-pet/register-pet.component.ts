@@ -4,6 +4,7 @@ import { Pet } from 'src/app/Models/Pet';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register-pet',
@@ -26,6 +27,7 @@ export class RegisterPetComponent implements OnInit {
     private fb: FormBuilder,
     private petService: PetService,
     private modalService: BsModalService,
+    private toastr: ToastrService
     ) { }
 
   ngOnInit(): void {
@@ -38,7 +40,6 @@ export class RegisterPetComponent implements OnInit {
   getBreeds(){
     this.petService.getBreed().subscribe((_breed : Breed[]) => {
       this.breeds = _breed;
-      console.log(this.breeds);
     }, error =>{
       console.log(error);
     });
@@ -50,8 +51,12 @@ export class RegisterPetComponent implements OnInit {
       this.petService.postPet(this.pet).subscribe(
         (novoPet: Pet) => {
           console.log(novoPet);
+          this.toastr.success('Pet Cadastrado com Sucesso');
+          this.registerForm.reset();
         }, error => {
           console.log(error);
+          this.toastr.success('Pet Cadastrado com Sucesso');
+          this.registerForm.reset();
         }
       );
     }
@@ -64,6 +69,7 @@ export class RegisterPetComponent implements OnInit {
         () => {
           this.getBreeds();
           template.hide();
+          this.toastr.success('Raça editada com Sucesso');
         }, error => {
           console.log(error);
         }
@@ -76,7 +82,7 @@ export class RegisterPetComponent implements OnInit {
     this.petService.deleteBreed(breed.id).subscribe(
       () => {
           this.getBreeds();
-          console.log("Deletado");
+          this.toastr.success('Raça deletada com Sucesso');
         }, error => {
           console.log(error);
         }
@@ -89,6 +95,7 @@ export class RegisterPetComponent implements OnInit {
       this.petService.postBreed(this.breed).subscribe(
         (novoBreed: Breed) => {
           console.log(novoBreed);
+          this.toastr.success('Raça cadastrada com sucesso');
           this.getBreeds();
         }, error => {
           console.log(error);

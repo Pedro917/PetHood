@@ -13,6 +13,8 @@ import { ListPetComponent } from './view/list-pet/list-pet.component';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
     ReactiveFormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

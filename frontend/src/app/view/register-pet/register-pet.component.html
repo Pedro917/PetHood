@@ -17,7 +17,7 @@
 </section>
 
 <section class="container">
-    <form [formGroup]="registerForm" class="formulario" id="formulario">
+    <form [formGroup]="registerForm" class="formulario" id="formulario" (ngSubmit)="salvarAlteracao()">
         <div class="subtitulo">
             <h3>Dados do Doador</h3>
         </div>
@@ -147,7 +147,7 @@
     <div class="form-footer">
 
         <div> <img src="../../../assets/IMG/warning.png" alt=""><p>Importante!<br>Preencha todos os dados</p></div>
-        <button type="submit" class="btn2 btn vermelho" form="formulario" [disabled]="!registerForm.valid" (click)="salvarAlteracao()">Salvar cadastro</button>
+        <button type="submit" class="btn2 btn vermelho" form="formulario" [disabled]="!registerForm.valid">Salvar cadastro</button>
         
     </div>
 </section>
